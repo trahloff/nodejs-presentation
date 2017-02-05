@@ -1,7 +1,7 @@
 'use strict';
 angular
     .module('userManagementCtrls', ['ngMaterial', 'ngMessages'])
-    .controller('landingControl', ['$scope', '$mdDialog', '$http', function($scope, $mdDialog, $http) {
+    .controller('landingControl', ['$scope', '$mdDialog', '$http', '$state', function($scope, $mdDialog, $http, $state) {
 
         function showAlert(userName, isPremium) {
             let title = isPremium ? 'Yeha' : 'Nope';
@@ -20,9 +20,9 @@ angular
         $scope.test = function(user) {
             $http({
                 method: 'GET',
-                url: '/database' + user.name
+                url: 'http://localhost/database/' + user.name
             }).then(function successCallback(response) {
-                console.log(response);
-            }, function errorCallback(response) {});
+                showAlert(user.name, response.data.premium)
+            });
         };
     }]);

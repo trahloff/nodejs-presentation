@@ -3,7 +3,7 @@ const express = require('express'),
     http = require('http');
 
 app
-    .use('/', require('./components/routes/database'))
+    .use('/database', require('./components/routes/database'))
     .use((request, response, next) => {
         response.status(404).end('error. route not found');
     });

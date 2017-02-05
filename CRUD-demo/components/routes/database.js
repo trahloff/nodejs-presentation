@@ -1,6 +1,6 @@
 const express = require('express');
 const levelup = require('levelup');
-const db = levelup('./mydb');
+const db = levelup('./userDB');
 
 let api = express.Router();
 
@@ -26,4 +26,4 @@ api
     });
 
 
-exports = api;
+module.exports = api;
