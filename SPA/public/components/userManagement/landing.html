@@ -1,0 +1,25 @@
+    <md-content flex layout="column" layout-align="center">
+
+
+        <div layout="row" layout-wrap>
+            <div flex="35"></div>
+            <div layout="column" flex="30">
+                <md-card flex class="littleShadow">
+                    <md-content layout-margin="60">
+                        <div>
+                            <form ng-submit="test(user)">
+                                <div layout-gt-sm="column">
+                                    <md-input-container class="md-block" max-width=40% flex-gt-sm="">
+                                        <label>Username</label>
+                                        <input id='user' name="username" ng-model="user.name" autofocus/>
+                                    </md-input-container>
+                                    <md-button class="md-raised md-primary" type="submit">Premium?</md-button>
+                                </div>
+                            </form>
+                        </div>
+                    </md-content>
+                </md-card>
+            </div>
+        </div>
+
+    </md-content>
