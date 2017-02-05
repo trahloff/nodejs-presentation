@@ -26,4 +26,4 @@ api
     });
 
 
-module.exports = api;
+exports = api;
