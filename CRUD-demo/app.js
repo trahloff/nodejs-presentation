@@ -1,6 +1,6 @@
-const express = require('express'),
-    app = express(),
-    http = require('http');
+const express = require('express');
+const app = express();
+const http = require('http');
 
 app.use('/database', require('./components/routes/database'));
 
