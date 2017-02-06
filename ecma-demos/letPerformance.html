@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <output id="out" style="font-family: monospace;white-space: pre-wrap;"></output>
+    <script type="text/javascript">
+        // Source: http://stackoverflow.com/a/21467841/5845681
+        function getPerf(fn, n) {
+            var t0, t1;
+            t0 = performance.now();
+            for (var i = 0; i < n; i++) {
+                fn(i)
+            }
+            t1 = performance.now();
+            return [parseFloat((t1 - t0).toFixed(3)), parseFloat((repeat * 1000 / (t1 - t0)).toFixed(3))];
+        }
+
+        var repeat = 100000000;
+        var msg = '';
+
+        //-------inside a scope------------
+        var letperf1 = getPerf(function(i) {
+            if (true) {
+                let a = i;
+            }
+        }, repeat);
+        msg += '<code>let</code> inside an if() takes ' + letperf1[0] + ' ms for ' + repeat + ' iterations (' + letperf1[1] + ' per sec).<br>'
+
+        var varperf1 = getPerf(function(i) {
+            if (true) {
+                var a = i;
+            }
+        }, repeat);
+        msg += '<code>var</code> inside an if() takes ' + varperf1[0] + ' ms for ' + repeat + ' iterations (' + varperf1[1] + ' per sec).<br>'
+
+        //-------outside a scope-----------
+
+        var letperf2 = getPerf(function(i) {
+            if (true) {}
+            let a = i;
+        }, repeat);
+        msg += '<code>let</code> outside an if() takes ' + letperf2[0] + ' ms for ' + repeat + ' iterations (' + letperf2[1] + ' per sec).<br>'
+
+        var varperf2 = getPerf(function(i) {
+            if (true) {}
+            var a = i;
+        }, repeat);
+        msg += '<code>var</code> outside an if() takes ' + varperf1[0] + ' ms for ' + repeat + ' iterations (' + varperf1[1] + ' per sec).<br>'
+
+        document.getElementById('out').innerHTML = msg
+    </script>
+</body>
+
+</html>

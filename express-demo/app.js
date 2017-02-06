@@ -28,4 +28,4 @@ console.log("Server listening on localhost:80");
 
 
 
-// app.use('/helloWorld', require('./components/routes/helloWorld.js'));
+// app.use('/hello', require('./components/routes/helloWorld.js'));
